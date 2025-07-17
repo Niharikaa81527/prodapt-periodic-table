@@ -1,0 +1,692 @@
+html, body {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: white; /* Changed from gradient to white */
+  min-height: 100vh;
+  padding: 20px 0;
+  margin: 0;
+  color: #222;
+}
+
+/* Logo */
+.logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Search Bar */
+.search-bar-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#search-bar {
+  padding: 10px 15px;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  font-size: 16px;
+  width: 300px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+#search-bar:focus {
+  border-color: #667eea;
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #333; /* Changed from white to dark for visibility */
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.9); /* Add white background */
+  padding: 5px 10px; /* Add padding */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+
+.legend-box {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  margin-right: 8px;
+  border: 1px solid #ddd; /* Add border for definition */
+}
+
+/* Periodic Table Grid */
+#grid-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(6, 80px);
+  gap: 4px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: center;
+  align-content: center;
+}
+
+/* Restore original box styling */
+.box {
+  position: relative;
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 8px;
+  width: 100%;
+  height: 80px;
+  box-sizing: border-box;
+}
+
+.box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Original hover shadow */
+}
+
+/* Empty boxes for proper grid alignment */
+.empty-box {
+  background: transparent;
+  box-shadow: none;
+  pointer-events: none;
+  border: none;
+  width: 100%;
+  height: 80px;
+  box-sizing: border-box;
+}
+
+/* Symbol and subtitle styling */
+.box .symbol {
+  font-size: 1.7em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+  color: #2a3a5a;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.symbol {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 2px;
+  text-align: center;
+  line-height: 1;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal.show {
+  display: block;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+}
+
+.modal-close:hover {
+  color: black;
+}
+
+.modal-left {
+  flex: 2;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+}
+.modal-right {
+  flex: 1;
+  min-width: 160px;
+  background: #f7f7fa;
+  border-radius: 8px;
+  padding: 16px 12px;
+  color: #222;
+  box-shadow: 0 1px 4px #0001;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+}
+.modal-right h3 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Costcodes Section Styling - IMPORTANT */
+.costcodes-section {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #007bff;
+}
+
+.costcodes-section h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#modal-costcodes {
+  line-height: 1.8;
+  color: #555;
+  font-size: 14px;
+  min-height: 20px; /* Ensure it takes space */
+}
+
+.costcode {
+  display: inline-block;
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 6px 12px;
+  margin: 3px;
+  border-radius: 15px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid #bbdefb;
+}
+
+/* Modal text elements */
+#modal-title {
+  font-size: 2em;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+#modal-subtitle {
+  font-size: 1.2em;
+  font-weight: 400;
+  margin: 0 0 15px 0;
+  color: #666;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+#modal-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+#modal-link {
+  display: inline-block;
+  background: #007bff;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 15px;
+  transition: background 0.3s;
+}
+
+#modal-link:hover {
+  background: #0056b3;
+}
+
+/* Red line between details and costcodes */
+.modal-divider {
+  width: 2px;
+  background: #ff4d4f;
+  height: 100%;
+  margin: 0 24px;
+  border-radius: 1px;
+}
+
+/* Modal content box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+}
+
+.modal-close:hover {
+  color: black;
+}
+
+.modal-left {
+  flex: 2;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+}
+.modal-right {
+  flex: 1;
+  min-width: 160px;
+  background: #f7f7fa;
+  border-radius: 8px;
+  padding: 16px 12px;
+  color: #222;
+  box-shadow: 0 1px 4px #0001;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+}
+.modal-right h3 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Costcodes Section Styling - IMPORTANT */
+.costcodes-section {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #007bff;
+}
+
+.costcodes-section h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#modal-costcodes {
+  line-height: 1.8;
+  color: #555;
+  font-size: 14px;
+  min-height: 20px; /* Ensure it takes space */
+}
+
+.costcode {
+  display: inline-block;
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 6px 12px;
+  margin: 3px;
+  border-radius: 15px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid #bbdefb;
+}
+
+/* Column colors */
+.col-0 { background: #ffe066 !important; } /* Yellow */
+.col-1 { background: #74c0fc !important; } /* Blue */
+.col-2 { background: #ff8787 !important; } /* Red */
+.col-3 { background: #63e6be !important; } /* Green */
+.col-4 { background: #b197fc !important; } /* Purple */
+.col-5 { background: #ffd6a5 !important; } /* Orange */
+.col-6 { background: #baffc9 !important; } /* Mint */
+.col-7 { background: #a0c4ff !important; } /* Light Blue */
+.col-8 { background: #ffd6e0 !important; } /* Light Pink */
+.col-9 { background: #d0bfff !important; } /* Lavender */
+
+/* Row-specific box shadows */
+.row-0 .box { box-shadow: 0 2px 8px 0 #ffe06644; }
+.row-1 .box { box-shadow: 0 2px 8px 0 #74c0fc44; }
+.row-2 .box { box-shadow: 0 2px 8px 0 #ff878744; }
+.row-3 .box { box-shadow: 0 2px 8px 0 #63e6be44; }
+.row-4 .box { box-shadow: 0 2px 8px 0 #b197fc44; }
+.row-5 .box { box-shadow: 0 2px 8px 0 #88888844; }
+
+/* Responsive for smaller screens */
+@media (max-width: 1200px) {
+  #grid-container {
+    grid-template-columns: repeat(10, 1fr); /* Keep 10 columns */
+    gap: 4px; /* Same gap */
+    padding: 20px; /* Same padding */
+  }
+}
+
+@media (max-width: 768px) {
+  #grid-container {
+    grid-template-columns: repeat(10, 1fr); /* Keep 10 columns */
+  }
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    max-width: 90%;
+    width: 90%;
+    padding: 20px;
+    max-height: 80vh;
+  }
+  
+  .modal-close {
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+  }
+}
+
+.search-bar-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin: 16px 0 0 0;
+  padding: 0 48px 0 16px; /* More padding on right, some on left */
+  box-sizing: border-box;
+}
+
+#search-bar {
+  width: 300px;
+  max-width: 100%; /* Prevent overflow */
+  padding: 12px 20px 12px 45px;
+  border: 2px solid #e1e5e9;
+  border-radius: 25px;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  background: #fff;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="%23999" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  background-size: 20px 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  outline: none;
+  box-sizing: border-box;
+}
+
+#search-bar:focus {
+  border-color: #4285f4;
+  box-shadow: 0 4px 12px rgba(66, 133, 244, 0.2);
+  transform: translateY(-1px);
+}
+
+#search-bar::placeholder {
+  color: #999;
+  font-weight: 400;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .search-bar-container {
+    padding: 0 24px;
+  }
+  
+  #search-bar {
+    width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-bar-container {
+    justify-content: center;
+    padding: 0 16px;
+  }
+  
+  #search-bar {
+    width: 200px;
+    padding: 10px 16px 10px 40px;
+    font-size: 14px;
+  }
+}
+
+/* Restore original subtitle styling */
+.subtitle {
+  font-size: 0.7em;
+  font-weight: 400;
+  text-align: center;
+  margin: 0;
+}
+
+/* Group Colors - ADD THESE */
+.box.pmtools, .legend-box.pmtools {
+  background: #ffe066 !important;
+  color: #222;
+}
+
+.box.codereview, .legend-box.codereview {
+  background: #74c0fc !important;
+  color: #222;
+}
+
+.box.unittesting, .legend-box.unittesting {
+  background: #ff8787 !important;
+  color: #222;
+}
+
+.box.testingtool, .legend-box.testingtool {
+  background: #63e6be !important;
+  color: #222;
+}
+
+.box.cicdtools, .legend-box.cicdtools {
+  background: #b197fc !important;
+  color: #222;
+}
+
+/* Modal content styling - ADD THESE */
+#modal-title {
+  font-size: 2em;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+#modal-subtitle {
+  font-size: 1.2em;
+  font-weight: 400;
+  margin: 0 0 15px 0;
+  color: #666;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+#modal-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+#modal-link {
+  display: inline-block;
+  background: #007bff;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+#modal-link:hover {
+  background: #0056b3;
+}
+
+/* Legend Styling - ADD THIS */
+.legend {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #333; /* Changed from white to dark for visibility */
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.9); /* Add white background */
+  padding: 5px 10px; /* Add padding */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 5px 10px;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.legend-box {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  margin-right: 8px;
+  border: 1px solid #ddd;
+}
+
+.legend-box.pmtools {
+  background: #ffe066 !important;
+}
+
+.legend-box.codereview {
+  background: #74c0fc !important;
+}
+
+.legend-box.unittesting {
+  background: #ff8787 !important;
+}
+
+.legend-box.testingtool {
+  background: #63e6be !important;
+}
+
+.legend-box.cicdtools {
+  background: #b197fc !important;
+}
+
+/* Group-specific colors for periodic table */
+.pmtools { 
+  background: #ffe066 !important; /* Yellow for PM Tools */
+  color: #333;
+}
+
+.codereview { 
+  background: #74c0fc !important; /* Blue for Code Review */
+  color: #333;
+}
+
+.unittesting { 
+  background: #ff8787 !important; /* Red for Unit Testing */
+  color: #333;
+}
+
+.testingtool { 
+  background: #63e6be !important; /* Green for Testing Tools */
+  color: #333;
+}
+
+.cicdtools { 
+  background: #b197fc !important; /* Purple for CI/CD Tools */
+  color: #333;
+}
+
+/* Legend colors to match */
+.legend-box.pmtools { 
+  background: #ffe066; 
+}
+
+.legend-box.codereview { 
+  background: #74c0fc; 
+}
+
+.legend-box.unittesting { 
+  background: #ff8787; 
+}
+
+.legend-box.testingtool { 
+  background: #63e6be; 
+}
+
+.legend-box.cicdtools { 
+  background: #b197fc; 
+}
