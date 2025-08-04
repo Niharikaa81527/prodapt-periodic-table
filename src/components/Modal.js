@@ -38,19 +38,24 @@ function Modal({ isOpen, element, onClose }) {
         <h3 id="modal-subtitle">{element.subtitle || 'No subtitle available'}</h3>
         <p id="modal-desc">{element.desc || 'No description available.'}</p>
         <div className="costcodes-section">
-          <h3>Costcodes</h3>
+          <h3>Refer to below projects</h3>
           <div id="modal-costcodes">
             {renderCostcodes()}
           </div>
         </div>
-        <a 
-          id="modal-link" 
-          href={element.link || '#'} 
-          target="_blank" 
-          rel="noopener noreferrer"
-        >
-          Learn More
-        </a>
+        {element.link && (
+          <a 
+            href={element.link} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="simple-link"
+          >
+            Website
+          </a>
+        )}
+        {!element.link && (
+          <p className="no-link">No official link available</p>
+        )}
       </div>
     </div>
   );

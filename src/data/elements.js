@@ -9,7 +9,7 @@ const elements = [
     link: "https://www.atlassian.com/software/jira",
     category: "Project Management",
     vendor: "Atlassian",
-    costcodes: `TES Global B2C (B/TEM/001)<br>Cenam SF Implementation (B/CNM/001)<br>Path to Premier (B/CTL/069)`
+    costcodes: `TES Global B2C (B/TEM/001) | <a href="mailto:sriharicherur.k@prodapt.com" class="project-head-email">sriharicherur.k@prodapt.com</a><br>Cenam SF Implementation (B/CNM/001) | <a href="mailto:ganesh.vr@prodapt.com" class="project-head-email">ganesh.vr@prodapt.com</a><br>Path to Premier (B/CTL/069) | <a href="mailto:sriharicherur.k@prodapt.com" class="project-head-email">sriharicherur.k@prodapt.com</a>`
   },
   {
     symbol: "AD",
@@ -19,7 +19,7 @@ const elements = [
     link: "https://azure.microsoft.com/en-us/products/devops",
     category: "Project Management",
     vendor: "Microsoft",
-    costcodes: `WIN IT - MIRROR  Decomm (B/WIN/114)<br>MVNx Onboarding Automation MVP 1 (B/ATT/054)<br>Delta RFC Application Project (B/DLF/002)`
+    costcodes: `WIN IT - MIRROR  Decomm (B/WIN/114) | <a href="mailto:gireesha.e@prodapt.com" class="project-head-email">gireesha.e@prodapt.com</a><br>MVNx Onboarding Automation MVP 1 (B/ATT/054) | <a href="mailto:gireesha.e@prodapt.com" class="project-head-email">gireesha.e@prodapt.com</a>`
   },
   {
     symbol: "MI",
@@ -29,7 +29,7 @@ const elements = [
     link: "https://miro.com/",
     category: "Collaboration",
     vendor: "Miro",
-    costcodes: `B2B SOW (B/KPN/038)<br>Customer CI Squad (B/CFL/004)<br>Delta Fiber Consulting (B/DLF/001)`
+    costcodes: `B2B SOW (B/KPN/038) | <a href="mailto:gireesha.e@prodapt.com" class="project-head-email">gireesha.e@prodapt.com</a><br>Customer CI Squad (B/CFL/004) | <a href="mailto:kumarmangalam.m@prodapt.com" class="project-head-email">kumarmangalam.m@prodapt.com</a>`
   },
   {
     symbol: "MD",
@@ -39,7 +39,7 @@ const elements = [
     link: "https://monday.com/",
     category: "Project Management",
     vendor: "Monday.com",
-    costcodes: `Centric FSL (B/CIG/002)<br>Gamma Enterprise Salesforce Track (B/GMA/006)`
+    costcodes: `Centric FSL (B/CIG/002) | <a href="mailto:girish.vn@prodapt.com" class="project-head-email">girish.vn@prodapt.com</a><br>Gamma Enterprise Salesforce Track (B/GMA/006) | <a href="mailto:kumarmangalam.m@prodapt.com" class="project-head-email">kumarmangalam.m@prodapt.com</a>`
   },
   {
     symbol: "PL",
@@ -299,7 +299,7 @@ const elements = [
     link: "https://www.appian.com/",
     category: "CI/CD",
     vendor: "Appian",
-    costcodes: `Appian enabled integration<br>VMO2 Appian Development (B/LGI/127)`
+    costcodes: `VMO2 Appian Development (B/LGI/127)`
   },
   {
     symbol: "CP",
@@ -309,7 +309,7 @@ const elements = [
     link: "https://www.copado.com/",
     category: "CI/CD",
     vendor: "Copado",
-    costcodes: `LLA - Peacock (B/CWC/051)<br>TDS SF Implementation (B/TDS/001)`
+    costcodes: `LLA - Peacock (B/CWC/051) | <a href="mailto:kumarmangalam.m@prodapt.com" class="project-head-email">kumarmangalam.m@prodapt.com</a><br>TDS SF Implementation (B/TDS/001) | <a href="mailto:ganesh.vr@prodapt.com" class="project-head-email">ganesh.vr@prodapt.com</a>`
   },
   {
     symbol: "AWS",
@@ -379,7 +379,7 @@ const elements = [
     link: "https://developer.salesforce.com/tools/sfdxcli",
     category: "CI/CD",
     vendor: "Salesforce",
-    costcodes: `CENAM SF Implementation (B/CNM/001)`
+    costcodes: `CENAM SF Implementation (B/CNM/001) | <a href="mailto:ganesh.vr@prodapt.com" class="project-head-email">ganesh.vr@prodapt.com</a>`
   },
   {
     symbol: "TC",
